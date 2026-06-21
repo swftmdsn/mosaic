@@ -1,0 +1,584 @@
+.mindmap-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: default;
+  background: var(--canvas);
+}
+
+.mindmap-canvas:active {
+  cursor: default;
+}
+
+.empty-mindmap-prompt {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: color-mix(in srgb, var(--faint) 72%, transparent);
+  font-size: 0.96rem;
+  font-weight: 520;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mindmap-selection-box {
+  position: absolute;
+  z-index: 20;
+  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--border-strong));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--surface) 74%, transparent);
+  pointer-events: none;
+}
+
+.map-layer {
+  position: relative;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.map-edges {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.map-edges path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--edge-color, #6b7280) 72%, transparent);
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.map-edges path.cross-link {
+  stroke: color-mix(in srgb, var(--edge-color, var(--accent)) 72%, transparent);
+  stroke-dasharray: 6 8;
+  stroke-width: 1.3;
+}
+
+.map-edges path.edge-hitbox {
+  stroke: transparent;
+  stroke-linecap: round;
+  stroke-width: 18;
+  pointer-events: stroke;
+}
+
+.edge-break-group {
+  pointer-events: auto;
+}
+
+.edge-breakpoint-svg {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.edge-break-group:hover .edge-breakpoint-svg,
+.edge-breakpoint-svg:focus {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.edge-breakpoint-svg circle {
+  fill: color-mix(in srgb, var(--surface) 92%, transparent);
+  stroke: color-mix(in srgb, var(--edge-color, #6b7280) 62%, var(--border));
+  stroke-width: 1;
+  filter: drop-shadow(0 1px 3px rgb(16 24 40 / 16%));
+}
+
+.edge-breakpoint-svg text {
+  fill: color-mix(in srgb, var(--edge-color, #6b7280) 72%, var(--text));
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.edge-breakpoint-svg:hover,
+.edge-breakpoint-svg:focus {
+  cursor: pointer;
+}
+
+.edge-hotspot {
+  position: absolute;
+  z-index: 2;
+  width: 22px;
+  min-height: 22px;
+  transform: translate(-50%, -50%);
+}
+
+.edge-hotspot::after {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 214px;
+  height: 14px;
+  transform: translateX(-50%);
+  content: "";
+}
+
+.edge-hotspot::before {
+  position: absolute;
+  inset: 6px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--border);
+  content: "";
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.edge-hotspot:hover::before,
+.edge-hotspot:focus-within::before,
+.edge-hotspot.open::before {
+  opacity: 1;
+}
+
+.edge-label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  z-index: 3;
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 760;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+
+.edge-label .markdown-heading {
+  line-height: 1;
+}
+
+.edge-label .markdown-heading-1 {
+  font-size: 1.18em;
+}
+
+.edge-label .markdown-heading-2 {
+  font-size: 1.12em;
+}
+
+.edge-label .markdown-heading-3,
+.edge-label .markdown-heading-4,
+.edge-label .markdown-heading-5,
+.edge-label .markdown-heading-6 {
+  font-size: 1em;
+}
+
+.edge-label.empty {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  opacity: 0;
+  padding: 0;
+}
+
+.edge-hotspot:hover .edge-label.empty,
+.edge-hotspot:focus-within .edge-label.empty {
+  opacity: 1;
+}
+
+.edge-label-input {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  z-index: 4;
+  width: 148px;
+  transform: translateX(-50%);
+  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--border));
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent), var(--shadow-soft);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 740;
+  outline: none;
+  padding: 4px 9px;
+  text-align: center;
+}
+
+.edge-color-popover {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  z-index: 5;
+  display: grid;
+  width: 204px;
+  gap: 8px;
+  transform: translate(-50%, -4px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 97%, transparent);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  padding: 9px;
+  pointer-events: none;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.edge-hotspot:hover .edge-color-popover,
+.edge-hotspot:focus-within .edge-color-popover,
+.edge-hotspot.open .edge-color-popover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.edge-color-popover.floating {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.outline-line-color-popover {
+  right: 0;
+  bottom: calc(100% + 8px);
+  left: auto;
+  top: auto;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.edge-swatches {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.edge-swatch {
+  width: 26px;
+  min-height: 26px;
+  border: 1px solid color-mix(in srgb, var(--border-strong) 78%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--swatch);
+  cursor: pointer;
+}
+
+.edge-swatch.active {
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--text);
+}
+
+.edge-arrow-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.edge-arrow-option {
+  display: grid;
+  min-height: 30px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.edge-arrow-option:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.edge-arrow-option.active {
+  border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.edge-arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.edge-custom-color {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 7px;
+}
+
+.edge-custom-color input[type="color"] {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  padding: 3px;
+}
+
+.edge-custom-color input[type="text"] {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  padding: 0 8px;
+}
+
+.mind-card {
+  position: absolute;
+  display: grid;
+  --node-glint-color: var(--glint-silver);
+  --node-accent-color: var(--border-strong);
+  --node-card-bg: color-mix(in srgb, var(--surface) 94%, transparent);
+  --node-card-text: var(--text);
+  --node-card-muted: var(--muted);
+  width: 232px;
+  min-height: 112px;
+  gap: 10px;
+  border: 1px solid color-mix(in srgb, var(--node-accent-color) 18%, var(--border));
+  border-radius: var(--radius-lg);
+  background: var(--node-card-bg);
+  box-shadow: var(--shadow-soft);
+  color: var(--node-card-text);
+  padding: 14px;
+  overflow: visible;
+  cursor: grab;
+}
+
+.mind-card.background-tinted {
+  border-color: color-mix(in srgb, var(--node-accent-color) 34%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--node-accent-color) 12%, transparent),
+    var(--shadow-soft);
+}
+
+.mind-card::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--node-glint-angle),
+    transparent 0deg 34deg,
+    color-mix(in srgb, var(--glint-silver-shadow) 36%, transparent) 43deg,
+    color-mix(in srgb, var(--node-glint-color) 68%, transparent) 50deg,
+    color-mix(in srgb, var(--glint-silver-bright) 86%, transparent) 56deg,
+    color-mix(in srgb, var(--node-glint-color) 48%, transparent) 62deg,
+    transparent 82deg 360deg
+  );
+  content: "";
+  opacity: 0;
+  padding: 1px;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.mind-card:hover::after,
+.mind-card.node-hover::after,
+.mind-card:focus-within::after {
+  animation: node-border-glint 752ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes node-border-glint {
+  0% {
+    --node-glint-angle: -70deg;
+    opacity: 0;
+  }
+
+  16% {
+    opacity: 0.86;
+  }
+
+  72% {
+    opacity: 0.5;
+  }
+
+  100% {
+    --node-glint-angle: 290deg;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mind-card:hover::after,
+  .mind-card.node-hover::after,
+  .mind-card:focus-within::after {
+    animation: none;
+    opacity: 0.28;
+  }
+}
+
+.mind-card:active {
+  cursor: grabbing;
+}
+
+.mind-card [contenteditable="true"],
+.mind-card button,
+.mind-card input,
+.mind-card .node-media {
+  cursor: auto;
+}
+
+.mind-card .node-media {
+  width: 100%;
+}
+
+.mind-card.selected {
+  border-color: color-mix(in srgb, var(--border-strong) 76%, var(--text) 24%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--border-strong) 70%, transparent),
+    var(--shadow-soft);
+}
+
+.mind-card.root-node {
+  --root-surface: var(--central-node-surface);
+  --root-text: var(--central-node-text);
+  --root-muted: color-mix(in srgb, var(--root-text) 68%, transparent);
+  --root-soft: color-mix(in srgb, var(--root-text) 12%, transparent);
+  border-color: color-mix(in srgb, var(--root-text) 48%, var(--root-surface));
+  border-style: solid;
+  border-width: 1px;
+  background: var(--root-surface);
+  color: var(--root-text);
+}
+
+.mind-card.root-node.background-tinted {
+  --root-surface: var(--node-card-bg);
+  --root-text: var(--node-card-text);
+  --root-muted: var(--node-card-muted);
+  --root-soft: color-mix(in srgb, var(--node-accent-color) 13%, var(--surface));
+  border-color: color-mix(in srgb, var(--node-accent-color) 42%, var(--border));
+}
+
+.mind-card.root-node.selected {
+  border-color: color-mix(in srgb, var(--root-text) 58%, var(--root-surface));
+  border-style: solid;
+  border-width: 1px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--root-text) 26%, transparent),
+    var(--shadow-soft);
+}
+
+.mind-card.root-node .collapse-button,
+.mind-card.root-node .row-drag-handle {
+  background: var(--root-soft);
+  color: var(--root-muted);
+}
+
+.mind-card.root-node .child-badge {
+  background: color-mix(in srgb, var(--root-text) 8%, transparent);
+  color: color-mix(in srgb, var(--root-muted) 78%, transparent);
+}
+
+.mind-card.root-node .mind-card-footer button {
+  color: var(--root-muted);
+}
+
+.mind-card.root-node .collapse-button:hover,
+.mind-card.root-node .mind-card-footer button:hover {
+  background: color-mix(in srgb, var(--root-text) 20%, transparent);
+  color: var(--root-text);
+}
+
+.mind-card.root-node .empty-node-input::before {
+  color: var(--root-muted);
+}
+
+.mind-card.root-node .map-node-input,
+.mind-card.root-node .map-node-input * {
+  color: var(--root-text);
+}
+
+.mind-card.background-tinted .map-node-input,
+.mind-card.background-tinted .map-node-input * {
+  color: var(--node-card-text);
+}
+
+.mind-card-header,
+.mind-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mind-card-header {
+  justify-content: space-between;
+}
+
+.mind-card-footer {
+  justify-content: flex-start;
+}
+
+.mind-card-footer [data-action="focus-node"] {
+  margin-left: auto;
+}
+
+.mind-card .collapse-button,
+.mind-card .row-drag-handle {
+  width: 26px;
+  min-height: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+  color: var(--node-card-muted);
+}
+
+.mind-card.background-tinted .collapse-button,
+.mind-card.background-tinted .row-drag-handle {
+  background: color-mix(in srgb, var(--node-accent-color) 10%, var(--surface));
+}
+
+.child-badge {
+  margin-right: auto;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface-soft) 62%, transparent);
+  color: color-mix(in srgb, var(--muted) 78%, transparent);
+  font-size: 0.66rem;
+  font-weight: 560;
+  min-width: 20px;
+  padding: 2px 6px;
+  text-align: center;
+}
+
+.mind-card.background-tinted .child-badge {
+  background: color-mix(in srgb, var(--node-accent-color) 7%, transparent);
+  color: color-mix(in srgb, var(--node-card-muted) 78%, transparent);
+}
+
+.map-node-input {
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.35;
+  padding: 4px 2px;
+}
+
+.mind-card-footer button {
+  min-height: 26px;
+  padding: 0 8px;
+  color: var(--node-card-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.mind-card-footer .icon-button {
+  width: 30px;
+  height: 28px;
+  min-width: 30px;
+  min-height: 28px;
+  padding: 0;
+}

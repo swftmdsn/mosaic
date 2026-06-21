@@ -1,0 +1,168 @@
+.outliner-page {
+  width: min(100%, var(--outline-width, 900px));
+  height: 100%;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 118px 40px 80px;
+}
+
+.starter-empty-state {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin: 0 0 34px;
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface) 96%, transparent),
+      color-mix(in srgb, var(--surface-soft) 74%, transparent)
+  );
+  box-shadow: var(--shadow-soft);
+  overflow: visible;
+  padding: 22px 54px 22px 22px;
+}
+
+.starter-dismiss {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--faint);
+  cursor: pointer;
+  padding: 0;
+}
+
+.starter-dismiss:hover,
+.starter-dismiss:focus-visible {
+  border-color: color-mix(in srgb, var(--border) 78%, transparent);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  color: var(--muted);
+}
+
+.starter-dismiss .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.starter-empty-state.map {
+  position: absolute;
+  top: 96px;
+  left: clamp(20px, 4vw, 54px);
+  z-index: 6;
+  width: min(432px, calc(100% - 40px));
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 0;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.starter-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+}
+
+.starter-kicker {
+  color: color-mix(in srgb, var(--faint) 78%, transparent);
+  font-size: 0.68rem;
+  font-weight: 820;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.starter-copy h1 {
+  max-width: 520px;
+  margin: 0;
+  color: var(--text);
+  font-size: 1.22rem;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+
+.starter-copy p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 560;
+  line-height: 1.45;
+}
+
+.starter-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.starter-start-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: end;
+}
+
+.starter-primary,
+.starter-secondary {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 36px;
+  align-items: center;
+  gap: 7px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 760;
+  line-height: 1;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.starter-primary {
+  border: 1px solid color-mix(in srgb, var(--solid-control) 84%, var(--border));
+  background: var(--solid-control);
+  color: var(--solid-control-text);
+  box-shadow: 0 8px 18px rgb(16 24 40 / 14%);
+}
+
+.starter-primary:hover {
+  background: color-mix(in srgb, var(--solid-control) 88%, var(--accent));
+}
+
+.starter-secondary {
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  color: var(--muted);
+}
+
+.starter-secondary:hover {
+  border-color: color-mix(in srgb, var(--border-strong) 82%, transparent);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.starter-primary .icon,
+.starter-secondary .icon {
+  width: 15px;
+  height: 15px;
+}

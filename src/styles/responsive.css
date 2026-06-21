@@ -1,0 +1,244 @@
+@media (max-width: 520px) {
+  .markdown-link-title {
+    display: none;
+  }
+
+  .frontmatter-header-actions code {
+    display: none;
+  }
+
+  .frontmatter-property {
+    grid-template-columns: 38px minmax(0, 1fr) 28px;
+  }
+
+  .frontmatter-property-key {
+    grid-column: 2;
+  }
+
+  .frontmatter-property-value {
+    grid-column: 2 / -1;
+  }
+
+  .frontmatter-property-type {
+    grid-column: 2 / -1;
+  }
+
+  .frontmatter-property-remove {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  .top-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .floating-menu {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .floating-left,
+  .floating-right {
+    justify-self: start;
+    justify-content: flex-start;
+  }
+
+  .document-tabs {
+    width: 100%;
+  }
+
+  .outliner-page {
+    padding-top: 210px;
+  }
+
+  .starter-empty-state.map {
+    top: 186px;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .canvas-stage,
+  .mindmap-canvas {
+    min-height: 100vh;
+  }
+
+  .top-toolbar {
+    position: sticky;
+    top: 10px;
+    margin: 10px;
+    left: auto;
+    right: auto;
+    max-width: none;
+  }
+
+  .floating-menu {
+    max-width: none;
+    backdrop-filter: none;
+  }
+
+  .floating-right {
+    width: 100%;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .floating-right > *,
+  .floating-right .toolbar-cluster,
+  .floating-right .segmented {
+    flex: 0 0 auto;
+  }
+
+  .floating-right .toolbar-action {
+    width: 36px;
+    min-width: 36px;
+    gap: 0;
+    padding: 0;
+  }
+
+  .floating-right .toolbar-action > span:not(.tooltip-label) {
+    display: none;
+  }
+
+  .floating-right .toolbar-action.save-action {
+    min-width: 36px;
+  }
+
+  .top-toolbar .popup-menu {
+    position: fixed;
+    top: 178px;
+    right: auto;
+    left: 10px;
+    width: calc(100vw - 20px);
+    min-width: 0;
+    max-width: none;
+    max-height: calc(100dvh - 198px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: none;
+  }
+
+  .top-toolbar .export-menu,
+  .top-toolbar .template-anchor .templates-menu,
+  .top-toolbar .theme-menu,
+  .top-toolbar .settings-menu {
+    right: auto;
+    left: 10px;
+    width: calc(100vw - 20px);
+    min-width: 0;
+    transform: none;
+  }
+
+  .starter-template-anchor .templates-menu,
+  .starter-empty-state.map .starter-template-anchor .templates-menu {
+    position: fixed;
+    top: 178px;
+    right: auto;
+    left: 10px;
+    width: calc(100vw - 20px);
+    min-width: 0;
+    max-height: calc(100dvh - 198px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: none;
+  }
+
+  .top-toolbar .export-anchor:hover .export-menu,
+  .top-toolbar .export-anchor:focus-within .export-menu,
+  .top-toolbar .export-anchor.open .export-menu {
+    transform: none;
+  }
+
+  .settings-menu {
+    padding: 10px;
+  }
+
+  .range-control {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .outline-row .format-toolbar {
+    right: 0;
+    left: 0;
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .outline-row .format-toolbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .outline-row .format-toolbar button,
+  .outline-row .format-toolbar .node-background-anchor {
+    flex: 0 0 auto;
+  }
+
+  .outline-row .format-link-input {
+    width: min(180px, 48vw);
+    min-width: 0;
+  }
+
+  #agentation-root {
+    display: none;
+  }
+
+  .toolbar-divider,
+  .file-pill {
+    display: none;
+  }
+
+  .outliner-page {
+    padding: 28px 18px 80px;
+  }
+
+  .starter-empty-state {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-bottom: 26px;
+    padding: 18px 48px 18px 18px;
+  }
+
+  .starter-empty-state.map {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 18px;
+  }
+
+  .starter-actions {
+    justify-content: flex-start;
+  }
+
+  .starter-start-row {
+    align-items: start;
+  }
+
+  .starter-primary,
+  .starter-secondary {
+    flex: 1 1 136px;
+    justify-content: center;
+  }
+
+  .document-title {
+    font-size: 1.4rem;
+  }
+}

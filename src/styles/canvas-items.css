@@ -1,0 +1,211 @@
+.canvas-item {
+  position: absolute;
+  z-index: 3;
+  cursor: grab;
+  user-select: none;
+}
+
+.canvas-item:active {
+  cursor: grabbing;
+}
+
+.canvas-item-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 4;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--muted);
+  opacity: 0;
+  backdrop-filter: blur(10px);
+}
+
+.canvas-item:hover .canvas-item-close,
+.canvas-item:focus-within .canvas-item-close {
+  opacity: 1;
+}
+
+.canvas-item-close:hover {
+  background: var(--surface-hover);
+  color: var(--danger);
+}
+
+.canvas-resize-handle {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  z-index: 4;
+  display: grid;
+  width: 28px;
+  min-height: 28px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--muted);
+  cursor: nwse-resize;
+  opacity: 0;
+  padding: 0;
+  backdrop-filter: blur(10px);
+}
+
+.canvas-item:hover .canvas-resize-handle,
+.canvas-item:focus-within .canvas-resize-handle {
+  opacity: 1;
+}
+
+.canvas-resize-handle:hover,
+.canvas-resize-handle:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 54%, var(--border));
+  background: var(--accent-soft);
+  color: var(--accent);
+  outline: none;
+}
+
+.canvas-resize-handle .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.canvas-image-item {
+  display: block;
+  margin: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.canvas-image-item img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  object-fit: contain;
+}
+
+.canvas-image-fallback {
+  display: none;
+  min-height: 132px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--border) 74%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 720;
+  line-height: 1.25;
+  padding: 18px;
+  text-align: center;
+}
+
+.canvas-image-fallback small {
+  display: block;
+  max-width: 100%;
+  margin-top: 5px;
+  overflow: hidden;
+  color: color-mix(in srgb, var(--muted) 76%, transparent);
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.canvas-image-item.image-load-failed img {
+  display: none;
+}
+
+.canvas-image-item.image-load-failed .canvas-image-fallback {
+  display: grid;
+}
+
+.canvas-link-preview {
+  display: grid;
+  min-height: 118px;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow-soft);
+  padding: 13px;
+  overflow: hidden;
+}
+
+.canvas-link-preview.has-thumbnail {
+  grid-template-rows: minmax(64px, 1fr) auto auto minmax(0, auto);
+}
+
+.canvas-link-thumbnail {
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+}
+
+.canvas-link-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.canvas-link-kicker {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 760;
+}
+
+.canvas-link-kicker .icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.canvas-link-kicker img {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border-radius: 3px;
+}
+
+.canvas-link-kicker span,
+.canvas-link-title,
+.canvas-link-preview p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.canvas-link-title {
+  display: -webkit-box;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 760;
+  line-height: 1.25;
+  text-decoration: none;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-word;
+}
+
+.canvas-link-title:hover {
+  color: var(--accent);
+}
+
+.canvas-link-preview p {
+  display: -webkit-box;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 620;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}

@@ -1,0 +1,175 @@
+.command-toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 45;
+  max-width: min(280px, calc(100vw - 44px));
+  border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 720;
+  line-height: 1.25;
+  padding: 10px 12px;
+  pointer-events: none;
+  backdrop-filter: blur(18px);
+}
+
+.command-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  background: rgb(0 0 0 / 16%);
+  padding-top: 12vh;
+  z-index: 20;
+}
+
+.tab-close-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  background: rgb(0 0 0 / 18%);
+  padding: 20px;
+}
+
+.tab-close-dialog {
+  display: grid;
+  width: min(380px, calc(100vw - 40px));
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  padding: 18px;
+}
+
+.tab-close-dialog h2 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.tab-close-dialog p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.tab-close-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.tab-close-dialog button {
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 740;
+  padding: 0 12px;
+}
+
+.tab-close-dialog .dialog-secondary {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.tab-close-dialog .dialog-danger {
+  border-color: color-mix(in srgb, var(--danger) 54%, var(--border));
+  background: color-mix(in srgb, var(--danger) 11%, var(--surface));
+  color: var(--danger);
+}
+
+.tab-close-dialog button:hover {
+  background: var(--surface-hover);
+}
+
+.tab-close-dialog .dialog-danger:hover {
+  background: color-mix(in srgb, var(--danger) 17%, var(--surface));
+}
+
+.command-panel {
+  display: grid;
+  width: min(520px, calc(100vw - 32px));
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 10px;
+}
+
+.command-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0 2px;
+}
+
+.command-input {
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  color: var(--text);
+  padding: 0 12px;
+}
+
+.command-input:focus,
+.command-input:focus-visible {
+  border-color: var(--border-strong);
+  outline: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border-strong) 34%, transparent);
+}
+
+.command-list {
+  display: grid;
+  gap: 4px;
+}
+
+.command-list button {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0 10px;
+  text-align: left;
+}
+
+.command-list button:hover {
+  background: var(--surface-soft);
+}
+
+.command-empty {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

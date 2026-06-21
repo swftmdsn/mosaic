@@ -1,0 +1,203 @@
+.node-media {
+  display: grid;
+  gap: 8px;
+  margin: 5px 0 3px;
+}
+
+.outline-row.image-inline {
+  grid-template-columns: 18px 20px 20px minmax(0, 1fr) minmax(120px, 34%) max-content;
+}
+
+.outline-row.image-inline .node-media {
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+  align-self: center;
+  margin: 0;
+}
+
+.outline-row.image-inline .outline-actions {
+  grid-column: 6 / 7;
+}
+
+.outline-row.image-below {
+  grid-template-rows: auto auto;
+  align-items: start;
+}
+
+.outline-row.image-below .node-media {
+  grid-column: 4 / 6;
+  grid-row: 2 / 3;
+  justify-self: start;
+  margin-top: 3px;
+}
+
+.mind-card.image-inline {
+  grid-template-columns: minmax(0, 1fr) 92px;
+  column-gap: 10px;
+}
+
+.mind-card.image-inline .mind-card-header,
+.mind-card.image-inline .mind-card-footer {
+  grid-column: 1 / -1;
+}
+
+.mind-card.image-inline .map-node-input {
+  grid-column: 1 / 2;
+}
+
+.mind-card.image-inline .node-media {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  align-self: start;
+  margin: 4px 0 0;
+}
+
+.mind-card.image-below .node-media {
+  grid-column: 1 / -1;
+}
+
+.node-image {
+  position: relative;
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  gap: 6px;
+  margin: 0;
+}
+
+.node-image .image-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--muted);
+  opacity: 0;
+  backdrop-filter: blur(10px);
+}
+
+.node-image:hover .image-remove,
+.node-image:focus-within .image-remove {
+  opacity: 1;
+}
+
+.node-image .image-remove:hover {
+  background: var(--surface-hover);
+  color: var(--danger);
+}
+
+.node-image img {
+  max-width: 100%;
+  border: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.image-width {
+  width: min(220px, 100%);
+  appearance: none;
+  accent-color: var(--muted);
+  background: transparent;
+}
+
+.link-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 720;
+  padding: 7px 8px 7px 12px;
+  backdrop-filter: blur(18px);
+}
+
+.link-hint button {
+  min-height: 26px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--surface-soft);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 760;
+  padding: 0 9px;
+}
+
+.markdown-link-popover {
+  position: fixed;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(560px, calc(100vw - 28px));
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 720;
+  padding: 6px 7px 6px 12px;
+  backdrop-filter: blur(18px);
+}
+
+.markdown-link-title {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.markdown-link-url {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.markdown-link-popover button {
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--surface);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 780;
+  padding: 0 11px;
+}
+
+.markdown-link-popover button:hover {
+  opacity: 0.9;
+}
+
+.markdown-link-popover .markdown-link-close {
+  display: inline-grid;
+  width: 28px;
+  min-width: 28px;
+  place-items: center;
+  background: var(--surface-soft);
+  color: var(--muted);
+  padding: 0;
+}
+
+.markdown-link-popover .markdown-link-close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.markdown-link-close .icon {
+  width: 13px;
+  height: 13px;
+}
