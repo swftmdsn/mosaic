@@ -1,126 +1,126 @@
 # Mosaic
 
-Mosaic est un espace de pensée visuelle pour transformer des idées floues en structures claires.
+Mosaic is a visual thinking space for turning fuzzy ideas into clear structures.
 
-Il combine la vitesse d'un plan, la lisibilité d'une carte mentale et l'élégance d'un outil de travail moderne. Vous écrivez, organisez, déplacez, repliez, reliez et visualisez vos idées sans changer de contexte.
+It combines the speed of an outline, the readability of a mind map, and the elegance of a modern work tool. You can write, organize, move, collapse, connect, and visualize your ideas without changing context.
 
-## Penser plus clairement
+## Think more clearly
 
-Mosaic est conçu pour les moments où une simple note devient trop plate, et où une carte mentale classique devient trop rigide.
+Mosaic is designed for moments when a simple note becomes too flat, and when a traditional mind map becomes too rigid.
 
-Utilisez-le pour :
+Use it to:
 
-- structurer un projet complexe ;
-- préparer une présentation, un atelier ou une stratégie ;
-- organiser une recherche, une veille ou un système de connaissances ;
-- clarifier une décision avec ses branches, hypothèses et conséquences ;
-- faire émerger un plan à partir d'un brainstorming ;
-- passer d'une vision globale à une liste d'actions concrètes ;
-- garder une trace durable de vos raisonnements.
+- structure a complex project;
+- prepare a presentation, workshop, or strategy;
+- organize research, monitoring, or a knowledge system;
+- clarify a decision with its branches, assumptions, and consequences;
+- turn a brainstorming session into an actionable outline;
+- move from a high-level vision to a list of concrete actions;
+- keep a lasting record of your reasoning.
 
-## Deux façons de voir la même idée
+## Two ways to see the same idea
 
-Mosaic permet de passer naturellement d'une vue plan à une vue mindmap.
+Mosaic lets you move naturally between an outline view and a mind map view.
 
-La vue plan est faite pour écrire vite, réorganiser une hiérarchie, faire monter ou descendre une idée, isoler une branche et avancer sans friction.
+The outline view is made for writing quickly, reorganizing a hierarchy, moving an idea up or down, isolating a branch, and moving forward without friction.
 
-La vue mindmap donne de la distance : elle rend les relations visibles, montre les zones trop chargées, révèle les branches faibles et aide à retrouver le fil d'un système d'idées.
+The mind map view gives you distance. It makes relationships visible, shows overloaded areas, reveals weak branches, and helps you find the thread of a system of ideas again.
 
-Les deux vues racontent la même chose, avec deux rythmes différents : précision quand vous écrivez, recul quand vous explorez.
+Both views tell the same story at two different rhythms: precision when you write, perspective when you explore.
 
-## Un outil pour travailler, pas pour décorer
+## A tool for working, not decorating
 
-Mosaic vise une expérience dense, calme et premium.
+Mosaic aims for a dense, calm, and premium experience.
 
-L'interface laisse la priorité au contenu : menus flottants, actions rapides, raccourcis visibles quand ils sont utiles, panneaux discrets, mode clair et mode sombre. Chaque détail cherche à réduire la friction plutôt qu'à ajouter du spectacle.
+The interface keeps content first: floating menus, quick actions, shortcuts that appear when useful, discreet panels, light mode, and dark mode. Every detail is meant to reduce friction instead of adding spectacle.
 
-Le design s'inspire des meilleurs outils de productivité modernes : lisible comme Notion, net comme Linear, minimal sans être vide, précis sans devenir froid.
+The design is inspired by the best modern productivity tools: readable like Notion, sharp like Linear, minimal without feeling empty, precise without becoming cold.
 
-## Ce que Mosaic aide à produire
+## What Mosaic helps you produce
 
-Mosaic n'est pas seulement un outil pour dessiner des cartes. C'est un outil pour faire progresser une pensée.
+Mosaic is not just a tool for drawing maps. It is a tool for moving a thought forward.
 
-Il aide à produire :
+It helps you produce:
 
-- des plans de projet plus nets ;
-- des architectures d'idées plus faciles à expliquer ;
-- des supports de présentation mieux organisés ;
-- des cartes de recherche navigables ;
-- des roadmaps et décisions plus lisibles ;
-- des notes qui restent réutilisables après la phase de réflexion.
+- clearer project outlines;
+- idea architectures that are easier to explain;
+- better organized presentation materials;
+- navigable research maps;
+- more readable roadmaps and decisions;
+- notes that remain reusable after the thinking phase.
 
-## Pour les esprits qui pensent en systèmes
+## For minds that think in systems
 
-Mosaic s'adresse aux personnes qui manipulent beaucoup d'information et ont besoin de voir les relations entre les choses.
+Mosaic is for people who handle a lot of information and need to see the relationships between things.
 
-Produit, stratégie, recherche, design, écriture, enseignement, conseil, entrepreneuriat : le point commun n'est pas le métier, c'est la façon de penser. Mosaic est fait pour celles et ceux qui construisent des arborescences, testent des angles, déplacent des blocs, comparent des options et cherchent la forme juste d'une idée.
+Product, strategy, research, design, writing, teaching, consulting, entrepreneurship: the shared trait is not the job, but the way of thinking. Mosaic is made for people who build trees, test angles, move blocks, compare options, and look for the right shape for an idea.
 
-## Une sensation locale, personnelle et durable
+## A local, personal, and durable feel
 
-Mosaic respecte le rythme de travail individuel : pas de compte à créer pour commencer, pas de bruit collaboratif imposé, pas de tableau de bord inutile avant d'écrire.
+Mosaic respects the rhythm of individual work: no account required to start, no imposed collaborative noise, no useless dashboard before writing.
 
-Vos cartes restent des objets que vous pouvez ranger, retrouver, versionner, partager ou archiver. L'outil accompagne votre système de travail au lieu de l'enfermer.
+Your maps remain objects you can store, find, version, share, or archive. The tool supports your work system instead of locking it in.
 
-## La promesse
+## The promise
 
-Mosaic veut devenir le bureau calme où une idée peut prendre forme.
+Mosaic wants to become the calm desk where an idea can take shape.
 
-Un endroit où l'on commence par quelques lignes, où l'on déploie une structure, où l'on visualise les connexions, puis où l'on repart avec un plan clair.
+A place where you start with a few lines, expand a structure, visualize the connections, then leave with a clear plan.
 
-Penser. Structurer. Voir. Reprendre la main.
+Think. Structure. See. Take back control.
 
-## Développement
+## Development
 
-Mosaic est une application Vite/TypeScript empaquetée en desktop macOS avec Tauri 2.
+Mosaic is a Vite/TypeScript application packaged as a macOS desktop app with Tauri 2.
 
-Prérequis locaux :
+Local prerequisites:
 
-- Node.js compatible avec `^20.19.0 || >=22.12.0` ;
-- npm ;
-- Rust et Cargo ;
-- les Command Line Tools Xcode sur macOS.
+- Node.js compatible with `^20.19.0 || >=22.12.0`;
+- npm;
+- Rust and Cargo;
+- Xcode Command Line Tools on macOS.
 
-Installer les dépendances :
+Install dependencies:
 
 ```sh
 npm ci
 ```
 
-Lancer la version web en développement :
+Run the web development version:
 
 ```sh
 npm run dev
 ```
 
-Lancer Mosaic en desktop macOS avec Tauri :
+Run Mosaic as a macOS desktop app with Tauri:
 
 ```sh
 npm run tauri:dev
 ```
 
-Construire le frontend seul :
+Build the frontend only:
 
 ```sh
 npm run build
 ```
 
-Construire les bundles macOS Tauri (`.app` et `.dmg`) :
+Build the Tauri macOS bundles (`.app` and `.dmg`):
 
 ```sh
 npm run tauri:build
 ```
 
-Les bundles générés se trouvent dans :
+The generated bundles are located in:
 
 - `src-tauri/target/release/bundle/macos/Mosaic.app`
 - `src-tauri/target/release/bundle/dmg/Mosaic_0.1.0_aarch64.dmg`
 
-Pour une build macOS universelle Apple Silicon + Intel, utilisez :
+For a universal Apple Silicon + Intel macOS build, use:
 
 ```sh
 npm run tauri:build:universal
 ```
 
-## Licence
+## License
 
-Ce projet est proprietaire et publie uniquement pour consultation. Voir [LICENSE](LICENSE).
+This project is proprietary and published for review only. See [LICENSE](LICENSE).
